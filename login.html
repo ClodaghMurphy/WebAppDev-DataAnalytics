@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<!--G00376300 Final Assessment 51317 -- WEB APPLICATION DEVELOPMENT - Data Analytics -->
+<!--Loginscreen Code adapted from Javascript Html Form Validation Tutorial-->
+<!--https://www.youtube.com/watch?v=6YRfpFEXj-Q-->
+
+<!-- Link to external style sheet, rel attribute specifies the relationship between the current document and the linked one -->
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+<!-- Use the meta charset attribute specifies the character encoding for the HTML document-->
+  <meta charset="UTF-8">
+<!--viewport is the user's visible area of a web page,varying on device -->
+  <meta name="viewport" content="width=device-width, intial-scale=1">
+   <!--Import d3-->
+   <script src="https://d3js.org/d3.v5.min.js"></script>
+
+<title>loginscreen</title>
+</head>
+<body>
+<body>
+<!-- html button that will take the user to the top of the page when clicked -->
+<button onclick="topFunction()" id="myBtn" title="Back to top">Back To Top</button>
+<!--Use of <div> tag to define various sections in an HTML document-->
+
+  <div class="header">   
+    <h1>VirtualOffice.ie</h1>
+    <h2>Online Resource for Staff Working remotely.</h2>
+    
+  </div>
+  <div class="links">
+    <a href="index.html">Home</a>
+	<a href="login.html">Log In</a>
+    <a href="message.html">View Management Message</a>
+    <a href="data.html">Data Visualisations</a>
+   
+  </div>  
+<div style="margin:60px">
+<!-- HTML form validation can be done by JavaScript.
+If a form field name/email/password is empty, this function alerts a message and returns false, to prevent the form from being submitted-->
+
+
+<form>
+<label for="name">Username:</label>
+<!--to style a specific input type, use attribute selectors-->
+<!-- Form validation is achieved by use of HTML <input> required attribute, a Boolean characteristic. -->
+<!-- No progress will be made if the field is blank.-->
+<input type = "text" name = "name" id = "name" required><br><br>
+<label for="email">Email:</label>
+<!-- using email data type enables the script to recognise the correct format and give the appropriate error message when not --> 
+<!-- meets requirement for form validation through JavaScript or HTML to ensure that a valid email address is entered -->
+<input type = "email" name = "email" id = "email" required><br><br>
+<label for="password">Password:</label>
+<input type = "password" name = "password" id = "password" required><br><br>
+<input type = "submit" name = "submit" id = "InsertNow"><br><br>
+</form>
+</div>
+
+
+
+}
+
+
+</body>
+</html>

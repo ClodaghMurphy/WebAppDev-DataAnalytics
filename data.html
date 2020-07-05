@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--G00376300 Final Assessment 51317 -- WEB APPLICATION DEVELOPMENT - Data Analytics -->
+  <title>Data Visualisation</title>
+<!-- Link to external style sheet, rel attribute specifies the relationship between the current document and the linked one>.   -->
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+<!-- Use the meta charset attribute specifies the character encoding for the HTML document-->
+  <meta charset="UTF-8">
+<!--viewport is the user's visible area of a web page,varying on device -->
+  <meta name="viewport" content="width=device-width, intial-scale=1">
+   <!--Import d3-->
+   <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+<style>
+<!-- Contained in stylesheet.css -->
+<!-- data visualisations from a csv that allows user to specify display settings, change colour, display size and animations -->
+
+</style> 
+
+<body>
+
+<!--Use of <div> tag to define various sections in an HTML document-->
+
+  <div class="header">   
+    <h1>VirtualOffice.ie</h1>
+    <h2>Online Resource for Staff Working remotely.</h2>
+    
+  </div>
+  <div class="links">
+    <a href="index.html">Home</a>
+	<a href="login.html">Log In</a>
+    <a href="message.html">View Management Message</a>
+    <a href="data.html">Data Visualisations</a>
+	
+    
+  </div>  
+  <div style="margin:60px">
+      
+	<p>
+	     The uptake in usage of the Virtual Office suite of products has grown with the number of cases of COVID-19.
+    </p><br>
+
+
+
+<!-- Allow user to specify display size settings   -->
+	Select Usage Chart Size:
+<!-- Use of id to produce an agile value for chartHeight based on user choice  -->
+	<select id="chartHeight">
+		<option value = "300">Small</option>
+		<option value = "500">Medium</option>
+		<option value = "700">Large</option>
+		</select></br>
+<!-- Use of id to allow user choose colour of chart -->
+	Select Usage Chart Colour: <input type="color" id="colorPicker">
+	<button onclick="drawChart()">Draw Chart</button>
+<div id="myDiv"></div>
+ 
+</body>   
+
+<script>
+
+<!-- drawChart function incorporates everything that you want to feature in the Chart  -->
+function drawChart(){
+	<!-- import the csv file -->
+	d3.csv("sales.csv").then(function(data){
+		console.log(data);
+		
+	<!-- Values for barchart defined with a DOM query -->
+	
+	<!--height/colour targets the choice from drop down menu -->
+	var height = document.getElementById("chartHeight").value;
+	var chartColor = document.getElementById("colorPicker").value;
+		
+	<!-- Convert csv string to number  -->
+	data.forEach(function(d){
+		d.dailyLogins = Number(d.dailyLogins);
+		})
+		
+	<!-- Scale for Y with.max method based on contents of csv -->
+	let yScale = d3.scaleLinear()
+		.domain([0, d3.max(data, function(d){
+			return d.dailyLogins;
+		})])	
+		.range([height,0]);
+		
+	<!-- Scale for X with scaleBand -->	
+	let xScale = d3.scaleBand()
+		.domain(data.map(function(d){
+			return d.month;
+		}))
+		.range([0, 270]);
+		
+	<!-- Create y axis to display the data points -->	
+	let yAxis = d3.axisLeft()
+		.scale(yScale);
+
+	<!--Create x axis to display month information at bottom of graph -->
+	let xAxis = d3.axisBottom()
+		.scale(xScale);
+	<!-- Block of code to prevent multiple iterations and renderings of graph when "draw chart" buttons are used    -->
+	d3.select("#myDiv").selectAll("*").remove();
+
+	<!-- svgContainer will append svg to the Div that appears in the body of the website page -->	
+	let svgContainer = d3.select("#myDiv").append("svg")
+		.attr("width", 1000)
+		.attr("height", 1000);
+		
+
+	<!-- myRectangle building blocks used to create barchart -->	
+	let myRectangle = svgContainer.selectAll("rect")
+		.data(data);
+		
+	myRectangle.enter()
+		.append("rect")
+	<!--transition command follows .append  -->		
+		.transition()
+		.delay(1000)
+		.ease(d3.easeCircleIn)
+	<!--Anonymous function to include 55 pixel gap between the bars/rectangles that are 50 pixels wide-->
+		.attr("x",function(d,i){
+		return 100 + (i*55);
+				})
+	<!--Function to align bar chart with yScale and the number of logins so that it is displayed in the typical format (rising)-->
+		.attr("y", function(d){
+		return yScale(d.dailyLogins);
+				})
+		.attr("width",50 )
+	<!-- Anonymous function to specify height linked to contents of csv and yScale values -->			
+		.attr("height", function(d){
+		return height - yScale(d.dailyLogins);
+				})
+	<!-- chartColor variable (no quotes!) chosen by user to determine bar chart colours -->
+		.attr("fill", chartColor);
+
+	<!--Axes are drawn on top of the bars   -->
+	svgContainer.append("g")
+	<!-- Position axes grid lines -->	
+		.attr("transform", "translate(65,0)")
+		.call(yAxis);
+
+	svgContainer.append("g")
+		.attr("transform", "translate(100,"+ height +")")
+		.call(xAxis)
+		.selectAll("text")
+			.attr("transform");
+		
+		
+});
+}
+</script>
+
+
+
+</html>
