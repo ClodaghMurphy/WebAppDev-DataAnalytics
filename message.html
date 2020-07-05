@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--G00376300 Final Assessment 51317 -- WEB APPLICATION DEVELOPMENT - Data Analytics -->
+  <title>Message from the Management</title>
+<!-- Link to external style sheet, rel attribute specifies the relationship between the current document and the linked one>.   -->
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+<!-- Use the meta charset attribute specifies the character encoding for the HTML document-->
+  <meta charset="UTF-8">
+<!--viewport is the user's visible area of a web page,varying on device -->
+  <meta name="viewport" content="width=device-width, intial-scale=1">
+   <!--Import d3-->
+   <script src="https://d3js.org/d3.v5.min.js"></script>
+</head>
+
+
+<body>
+<!-- html button that will take the user to the top of the page when clicked -->
+<button onclick="topFunction()" id="myBtn" title="Back to top">Back To Top</button>
+<!--Use of <div> tag to define various sections in an HTML document-->
+
+  <div class="header">   
+    <h1>VirtualOffice.ie</h1>
+    <h2>Online Resource for Staff Working remotely.</h2>
+    
+  </div>
+  <div class="links">
+    
+	<a href="index.html">Home</a>
+	<a href="login.html">Log In</a>
+    <a href="message.html">View Management Message</a>
+    <a href="data.html">Data Visualisations</a>
+    
+  </div>  
+  <div style="margin:60px">
+ <!-- Code adapted from Solutions to Exercises Week 7-->    
+<!--Online Lecture Michael Duignan--> 
+<!--Access and change HTML on the web page through the DOM--> 
+
+<!--html element--> 
+<!-- Button, when clicked will activate the changeText function-->  
+<button onclick="changeText()">Click here!</button>
+	<h1 id="output">Click the button above to read a motivational message from the management.</h1>
+<!--Use of the hidden attribute prevents the user from seeing the image until some other condition has been met as part of the changeText function--> 
+<!--hidden is a boolean attribute, it specifies that an element is not yet relevant-->
+	<img id="facepic" height="200" hidden>
+
+</body>   
+<script>
+<!--JavaScript element--> 
+function changeText()
+<!-- Function associated with the button above to modify the text using a DOM query selector and allow the appearance of a Covid19 themed image-->
+<!-- hidden = false therefore image can be displayed at this point--> 
+{
+	document.getElementById("output").innerHTML = "We are all in this together."
+	document.getElementById("facepic").hidden = false;
+	document.getElementById("facepic").src = "mask.png";
+}
+	
+	
+
+</script>
+
+
+</html> 

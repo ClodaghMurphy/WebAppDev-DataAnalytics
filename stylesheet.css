@@ -1,0 +1,127 @@
+/* G00376300 Final Assessment 51317 -- WEB APPLICATION DEVELOPMENT - Data Analytics*/
+/* stylesheet.css*/
+
+
+/* CSS code needs to appear between opening and closing head tags, it can go before or after the title-->
+<style*/
+
+/* THE CSS STYLING FOR THE HTML PAGE GENERALLY*/
+/*Styling adapted from https://github.com/shkyler/gmit-wad-project  */
+  body{
+/*Start with the preferred font, end with a generic family */  
+    font-family: "Montserrat", sans-serif;
+    margin:0;
+/*Set the background colour of the page*/
+	background-color: lightblue;
+	  }
+/* Style rules to apply where header class appears, the banner across the top of the page*/
+/* rgb(81, 81, 81) is a grey colour that appears throughout the site*/
+<!--    -->
+  .header{
+    padding: 40px;
+    text-align: center;
+    background:rgb(81, 81, 81);
+    color: white;
+  }
+  /* Style rules to apply whenever h1 headings appear*/
+<!--    -->
+  .header h1{
+    font-size: 40px;
+  }
+  /* Style rules to apply whenever h2 headings appear*/
+  
+  .header h2{
+    font-size:20px;
+  } 
+  
+    
+/* There will be minimal content on this webpage, so centre anything between <p> tags */  
+  p {
+	  text-align: center;
+	  }
+ /* Define the style of the links  */ 
+    .links{
+/* Hidden overflow ensures text is clipped and does not render outside the element's (header) box*/
+    overflow: hidden;
+    background-color: rgb(81, 81, 81);
+  }
+  .links a{
+ /*style the links in the navigation bar*/
+ /*.links a will apply further styles to the links for navigating the site*/
+    float:left;
+    display:block;
+    padding: 16px 30px;
+    color: white;
+/*remove underline text decoration from links*/
+    text-decoration: none; 
+  }
+
+  .links a:hover{
+/* :hover selector in links a is used to select elements as mouse moves over them*/
+/* at hover the display is yellow text, enlarged*/
+	background-color: rgb(81, 81, 81);
+    color: yellow;
+	font-size: 120%;
+  }
+ /*Assign styling for the footer class*/ 
+  .footer{
+    padding: 20px;
+    text-align: center;
+    background:rgb(81, 81, 81);
+    color: white;
+  }
+
+  .center {
+/*Specifications of centred items*/   
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 12px;
+  text-align: center;
+}
+
+/*styling for the buttons which link to other areas of the site*/
+#button {
+  background-color: rgb(81, 81, 81);
+  border: none;
+  color: yellow;
+  width:150px;
+  height:60px;
+  margin:20px;
+  text-align: center;
+  text-decoration: none;
+/*display: inline-block does not add a line-break after the element, so the element can sit next to other elements*/
+  display: inline-block;
+  font-size: 110px;
+  align-self: center;
+}
+
+
+}
+/* THE CSS STYLING ATTRIBUTES FOR myBtn*/
+/* Adapted from https://www.w3schools.com/howto/howto_js_scroll_to_top.asp */
+#myBtn {
+  display: none;/* button is hidden by default */
+  position: fixed;/* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px;/* Place the button 30px from the right */
+  z-index: 99; /*to ensure no overlap*/
+  font-size: 18px;
+  border: none; /*  no border */
+  outline: none; /* no outline */
+  background-color: yellow;
+  color: black;
+  cursor: pointer;/* Mouse pointer on hover */
+  padding: 15px;
+  border-radius: 4px;
+}
+/*The :hover selector is used to select elements when you mouse over them*/
+#myBtn:hover {
+  background-color: rgb(81, 81, 81);
+}
+
+
+
+
+
+  
